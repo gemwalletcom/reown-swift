@@ -1,6 +1,5 @@
 import Foundation
 import Combine
-// import YttriumWrapper
 
 /// Web3 Wallet Client
 ///
@@ -102,25 +101,17 @@ public class WalletKitClient {
     private let signClient: SignClientProtocol
     private let pairingClient: PairingClientProtocol
     private let pushClient: PushClientProtocol
-    // private let chainAbstractionClient: ChainAbstractionClient
 
     private var account: Account?
-
-    // Namespaces
-    // public let ChainAbstraction: ChainAbstractionNamespace
 
     init(
         signClient: SignClientProtocol,
         pairingClient: PairingClientProtocol,
         pushClient: PushClientProtocol
-        // chainAbstractionClient: ChainAbstractionClient,
-        // ChainAbstractionNamespace: ChainAbstractionNamespace
     ) {
         self.signClient = signClient
         self.pairingClient = pairingClient
         self.pushClient = pushClient
-        // self.chainAbstractionClient = chainAbstractionClient
-        // self.ChainAbstraction = ChainAbstractionNamespace
     }
     
     /// For a wallet to approve a session proposal.
@@ -274,23 +265,6 @@ public class WalletKitClient {
     public func getPairings() -> [Pairing] {
         return pairingClient.getPairings()
     }
-
-    // Chain abstraction methods commented out
-    /*
-    public func prepareERC20TransferCall(
-        erc20Address: String,
-        to: String,
-        amount: String
-    ) -> Call {
-        return chainAbstractionClient.prepareErc20TransferCall(
-            erc20Address: erc20Address, to: to, amount: amount)
-    }
-
-    @available(*, message: "This method is experimental. Use with caution.")
-    public func erc20Balance(chainId: String, token: String, owner: String) async throws -> Ffiu256 {
-        return try await chainAbstractionClient.erc20TokenBalance(chainId: chainId, token: token, owner: owner)
-    }
-    */
 }
 
 
