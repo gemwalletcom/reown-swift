@@ -37,12 +37,8 @@ let package = Package(
         .library(
             name: "WalletConnectIdentity",
             targets: ["WalletConnectIdentity"]),
-        .library(
-            name: "YttriumWrapper",
-            targets: ["YttriumWrapper"])
     ],
     dependencies: [
-        .package(url: "https://github.com/reown-com/yttrium", exact: Version(stringLiteral: "0.9.4"))
     ],
     targets: [
         .target(
@@ -121,10 +117,6 @@ let package = Package(
         .target(
             name: "Events",
             dependencies: ["WalletConnectUtils", "WalletConnectNetworking"]),
-        .target(
-            name: "YttriumWrapper",
-            dependencies: [.product(name: "Yttrium", package: "yttrium")],
-            path: "Sources/YttriumWrapper"),
         .testTarget(
             name: "WalletConnectSignTests",
             dependencies: ["WalletConnectSign", "WalletConnectUtils", "TestingUtils", "WalletConnectVerify"]),
