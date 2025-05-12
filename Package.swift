@@ -37,22 +37,18 @@ let package = Package(
         .library(
             name: "WalletConnectIdentity",
             targets: ["WalletConnectIdentity"]),
-        .library(
-            name: "YttriumWrapper",
-            targets: ["YttriumWrapper"])
     ],
     dependencies: [
-        .package(url: "https://github.com/reown-com/yttrium", exact: Version(stringLiteral: "0.9.4"))
     ],
     targets: [
         .target(
             name: "WalletConnectSign",
-            dependencies: ["WalletConnectPairing", "WalletConnectVerify", "WalletConnectSigner", "Events", "YttriumWrapper"],
+            dependencies: ["WalletConnectPairing", "WalletConnectVerify", "WalletConnectSigner", "Events"],
             path: "Sources/WalletConnectSign",
             resources: [.process("Resources/PrivacyInfo.xcprivacy")]),
         .target(
             name: "ReownWalletKit",
-            dependencies: ["WalletConnectSign", "WalletConnectPush", "WalletConnectVerify", "YttriumWrapper"],
+            dependencies: ["WalletConnectSign", "WalletConnectPush", "WalletConnectVerify"],
             path: "Sources/ReownWalletKit",
             resources: [.process("Resources/PrivacyInfo.xcprivacy")]),
         .target(
@@ -121,11 +117,6 @@ let package = Package(
         .target(
             name: "Events",
             dependencies: ["WalletConnectUtils", "WalletConnectNetworking"]),
-        .target(
-            name: "YttriumWrapper",
-            dependencies: [.product(name: "Yttrium", package: "yttrium")],
-            path: "Sources/YttriumWrapper"
-        ),
         .testTarget(
             name: "WalletConnectSignTests",
             dependencies: ["WalletConnectSign", "WalletConnectUtils", "TestingUtils", "WalletConnectVerify"]),
@@ -134,7 +125,7 @@ let package = Package(
             dependencies: ["WalletConnectPairing", "TestingUtils"]),
         .testTarget(
             name: "NotifyTests",
-            dependencies: ["WalletConnectNotify", "TestingUtils", "YttriumWrapper"]),
+            dependencies: ["WalletConnectNotify", "TestingUtils"]),
         .testTarget(
             name: "RelayerTests",
             dependencies: ["WalletConnectRelay", "WalletConnectUtils", "TestingUtils"]),
@@ -159,8 +150,6 @@ let package = Package(
             dependencies: ["Commons", "TestingUtils"]),
         .testTarget(
             name: "EventsTests",
-            dependencies: ["Events"]),
+            dependencies: ["Events"])
     ],
-    swiftLanguageVersions: [.v5]
-)
-
+    swiftLanguageVersions: [.v5])
