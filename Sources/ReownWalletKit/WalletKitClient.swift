@@ -108,7 +108,7 @@ public class WalletKitClient {
     init(
         signClient: SignClientProtocol,
         pairingClient: PairingClientProtocol,
-        pushClient: PushClientProtocol,
+        pushClient: PushClientProtocol
     ) {
         self.signClient = signClient
         self.pairingClient = pairingClient
