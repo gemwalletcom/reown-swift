@@ -21,7 +21,7 @@ struct WalletKitClientFactory {
         return WalletKitClient(
             signClient: signClient,
             pairingClient: pairingClient,
-            pushClient: pushClient,
+            pushClient: pushClient
         )
     }
 }
